@@ -2,11 +2,13 @@ package model.service;
 
 import model.animals_list.Domestic_animals;
 import model.pets.*;
+import model.writer.file_handler;
 
 import java.time.LocalDate;
 
 public class Service {
     private Domestic_animals domesticAnimals;
+    private file_handler writable;
 
     public Service(){
         domesticAnimals = new Domestic_animals();
@@ -30,5 +32,15 @@ public class Service {
             default:
                 break;
         }
+    }
+
+    public void saveList(){
+        String filename = "src/save/list.txt";
+        writable.save(domesticAnimals, filename);
+    }
+
+    public void loadSaveList(){
+        String filename = "src/save/list.txt";
+        domesticAnimals = (Domestic_animals) writable.load(filename);
     }
 }
