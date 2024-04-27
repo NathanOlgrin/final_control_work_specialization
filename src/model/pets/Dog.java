@@ -4,7 +4,7 @@ import java.time.LocalDate;
 
 public class Dog extends Pet{
 
-    public Dog(int id, String name, String commands, LocalDate birthday) {
-        super(id, name, commands, birthday);
+    public Dog(String name, String commands, LocalDate birthday, Type type) {
+        super(name, commands, birthday, type);
     }
 }

@@ -1,23 +1,26 @@
 package model.pets;
 
-import model.AnimalGenerality;
+import model.animals_list.AnimalGenerality;
 
 import java.io.Serializable;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 
+
 public abstract class Pet implements Serializable, AnimalGenerality<Dog> {
     private int id;
     private String name;
     private String commands;
     private LocalDate birthday;
+    private Type type;
 
-    public Pet(int id, String name, String commands, LocalDate birthday) {
+    public Pet(String name, String commands, LocalDate birthday, Type type) {
         id = -1;
         this.name = name;
         this.commands = commands;
         this.birthday = birthday;
+        this.type = type;
     }
 
     public int getId() {
@@ -60,11 +63,22 @@ public abstract class Pet implements Serializable, AnimalGenerality<Dog> {
         Period diff = Period.between(date1, date2);
         return diff.getYears();
     }
+
+    public Type getType() {
+        return type;
+    }
+
+    public void setType(Type type) {
+        this.type = type;
+    }
+
     public String getInfo()
     {
         StringBuilder sb = new StringBuilder();
         sb.append("Имя: ");
         sb.append(name);
+        sb.append(". Вид: ");
+        sb.append(type);
         sb.append(". Издаваемые звуки: ");
         sb.append(commands);
         sb.append(". Дата рождения: ");

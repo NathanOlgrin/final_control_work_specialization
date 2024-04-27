@@ -1,4 +1,6 @@
-package model;
+package model.animals_list;
+
+import model.pets.Type;
 
 import java.io.Serializable;
 import java.time.LocalDate;
@@ -11,4 +13,6 @@ public interface AnimalGenerality<T> extends Serializable {
     LocalDate getBirthday();
     String getInfo();
     String getCommands();
+    Type getType();
+    void setType(Type type);
 }
