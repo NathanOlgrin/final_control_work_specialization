@@ -1,9 +1,10 @@
 package model.animals_list;
 
+import model.pets.Type;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import model.counter.Counter;
 
 public class Domestic_animals <E extends AnimalGenerality<E>> implements Serializable {
     private int animalId;
@@ -11,7 +12,6 @@ public class Domestic_animals <E extends AnimalGenerality<E>> implements Seriali
     private int count_cats;
     private int cout_hamsters;
     private List<E> animalList;
-    Counter count;
 
     public Domestic_animals(){
         this(new ArrayList<>());
@@ -43,7 +43,6 @@ public class Domestic_animals <E extends AnimalGenerality<E>> implements Seriali
                 break;
             }
         }
-        count.add();
         return true;
     }
 
@@ -66,7 +65,7 @@ public class Domestic_animals <E extends AnimalGenerality<E>> implements Seriali
         StringBuilder sb = new StringBuilder();
         sb.append("Список животных: \n");
         for(E pet : animalList){
-            sb.append(pet);
+            sb.append(pet.getInfo());
             sb.append("\n");
         }
         return sb.toString();
@@ -95,27 +94,47 @@ public class Domestic_animals <E extends AnimalGenerality<E>> implements Seriali
 
     public boolean remove(int animalId){
         if(checkId(animalId)){
-            E e = getById(animalId);
-            return animalList.remove(e);
+            E pet = getById(animalId);
+            switch (pet.getType()){
+                case Собака -> {
+                    count_dogs--;
+                    break;
+                }
+                case Кот -> {
+                    count_cats--;
+                    break;
+                }
+                case Хомяк -> {
+                    cout_hamsters--;
+                    break;
+                }
+                default -> {
+                    break;
+                }}
+            animalList.remove(pet);
+            for(int i=0; i<animalList.size(); i++){
+                animalList.get(i).setId(i);
+            }
+            return true;
         }
         return false;
     }
     public boolean addCommands(int animalId, String new_commands){
         if(checkId(animalId)){
-            E e = getById(animalId);
-            e.setAddCommands(new_commands);
+            E pet = getById(animalId);
+            pet.setAddCommands(new_commands);
             return true;
         }
         return false;
     }
     public String getCommands(int animalId){
         if(checkId(animalId)){
-            E e = getById(animalId);
+            E pet = getById(animalId);
             StringBuilder sb = new StringBuilder();
             sb.append("Список команд ");
-            sb.append(e.getName());
+            sb.append(pet.getName());
             sb.append(": \n");
-            sb.append(e.getCommands());
+            sb.append(pet.getCommands());
             return sb.toString();
         }
         return "Животного с таким id в списке нет";

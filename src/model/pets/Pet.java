@@ -3,9 +3,9 @@ package model.pets;
 import model.animals_list.AnimalGenerality;
 
 import java.io.Serializable;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
+import java.time.format.DateTimeFormatter;
 
 
 public abstract class Pet implements Serializable, AnimalGenerality<Dog> {
@@ -77,20 +77,20 @@ public abstract class Pet implements Serializable, AnimalGenerality<Dog> {
         sb.append(this.commands);
         sb.append(", ");
         sb. append(add_commands);
-        this.name = sb.toString();
+        this.commands = sb.toString();
     }
     public String getInfo()
     {
         StringBuilder sb = new StringBuilder();
-        sb.append("Имя: ");
+        sb.append(id);
+        sb.append(". Имя: ");
         sb.append(name);
         sb.append(". Вид: ");
         sb.append(type);
         sb.append(". Издаваемые звуки: ");
         sb.append(commands);
         sb.append(". Дата рождения: ");
-        SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
-        String strDate = formatter.format(birthday);
+        String strDate = birthday.format(DateTimeFormatter.ofPattern("dd.MM.yyyy"));
         sb.append(strDate);
         return sb.toString();
     }

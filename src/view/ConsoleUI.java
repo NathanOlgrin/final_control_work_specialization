@@ -39,12 +39,9 @@ public class ConsoleUI implements View{
 
         if(choice > 0 && choice < menu.size()+1){
             menu.execute(choice);
-        }
-
-        if (choice == menu.size()){
-            return false;
-        } else {
             return true;
+        } else {
+            return false;
         }
     }
     public void addAnimal(){
