@@ -1,10 +1,8 @@
 package model.writer;
 
-import model.pets.Pet;
-
 import java.io.*;
 
-public class file_handler implements Writable{
+public class FileHandler implements Writable{
     @Override
     public boolean save(Serializable serializable, String filename) {
         try(ObjectOutputStream objectOutputStream = new ObjectOutputStream(new FileOutputStream(filename))){

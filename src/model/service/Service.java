@@ -2,16 +2,17 @@ package model.service;
 
 import model.animals_list.Domestic_animals;
 import model.pets.*;
-import model.writer.file_handler;
+import model.writer.Writable;
 
 import java.time.LocalDate;
 
 public class Service {
     private Domestic_animals domesticAnimals;
-    private file_handler writable;
+    private Writable writable;
 
-    public Service(){
+    public Service(Writable writable){
         domesticAnimals = new Domestic_animals();
+        this.writable = writable;
     }
 
     public void addPet(int choice, String name, String commands, LocalDate birthday){
@@ -34,6 +35,21 @@ public class Service {
         }
     }
 
+    public void remove(int id){
+        domesticAnimals.remove(id);
+    }
+
+    public String getInfoList(){
+       return domesticAnimals.getInfoList();
+    }
+
+    public String getCommands(int id){
+        return domesticAnimals.getCommands(id);
+    }
+
+    public boolean addCommands(int id, String commands){
+        return domesticAnimals.addCommands(id, commands);
+    }
     public void saveList(){
         String filename = "src/save/list.txt";
         writable.save(domesticAnimals, filename);

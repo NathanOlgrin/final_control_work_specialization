@@ -15,4 +15,5 @@ public interface AnimalGenerality<T> extends Serializable {
     String getCommands();
     Type getType();
     void setType(Type type);
+    void setAddCommands(String add_commands);
 }

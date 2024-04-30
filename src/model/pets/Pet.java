@@ -72,6 +72,13 @@ public abstract class Pet implements Serializable, AnimalGenerality<Dog> {
         this.type = type;
     }
 
+    public void setAddCommands(String add_commands){
+        StringBuilder sb = new StringBuilder();
+        sb.append(this.commands);
+        sb.append(", ");
+        sb. append(add_commands);
+        this.name = sb.toString();
+    }
     public String getInfo()
     {
         StringBuilder sb = new StringBuilder();
