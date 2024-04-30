@@ -1,0 +1,168 @@
+1. Используя команду cat в терминале операционной системы Linux, создать два файла Домашние животные (заполнив файл собаками, кошками, хомяками) и Вьючные животными заполнив файл Лошадьми, верблюдами и ослы), а затем объединить их. Просмотреть содержимое созданного файла.
+Переименовать файл, дав ему новое имя (Друзья человека).
+
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ cat > pets.txt
+dogs
+cats
+hamsters
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ cat > pack_animals.txt
+horses
+camels
+donkeys
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ cat pets.txt pack_animals.txt > new_file.txt
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ cat new_file.txt
+dogs
+cats
+hamsters
+horses
+camels
+donkeys
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ mv new_file.txt human_friends.txt
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ 
+
+2. Создать директорию, переместить файл туда.
+
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ mkdir final_control_work
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ mv human_friends.txt ./final_control_work
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ cd final_control_work
+olgrin@Olgrin-GeekBrains-Ubuntu:~/final_control_work$ ll
+итого 12
+drwxrwxr-x  2 olgrin olgrin 4096 апр 21 00:19 ./
+drwxr-x--- 27 olgrin olgrin 4096 апр 21 00:19 ../
+-rw-rw-r--  1 olgrin olgrin   41 апр 21 00:16 human_friends.txt
+olgrin@Olgrin-GeekBrains-Ubuntu:~/final_control_work$ 
+
+
+3. Подключить дополнительный репозиторий MySQL. Установить любой пакет из этого репозитория.
+
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ sudo dpkg -i ./Загрузки/mysql-apt-config_0.8.29-1_all.deb
+(Чтение базы данных … на данный момент установлен 221831 файл и каталог.)
+Подготовка к распаковке …/mysql-apt-config_0.8.29-1_all.deb …
+Распаковывается mysql-apt-config (0.8.29-1) на замену (0.8.29-1) …
+Настраивается пакет mysql-apt-config (0.8.29-1) …
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ sudo apt update
+Сущ:1 http://repo.mysql.com/apt/ubuntu jammy InRelease
+Сущ:2 http://ru.archive.ubuntu.com/ubuntu jammy InRelease                                                                                                                                                               
+Сущ:3 http://ru.archive.ubuntu.com/ubuntu jammy-updates InRelease                                                                                                                           
+Сущ:4 https://download.docker.com/linux/ubuntu jammy InRelease                                                                                                                            
+Сущ:5 http://ru.archive.ubuntu.com/ubuntu jammy-backports InRelease                                                                                                                       
+Сущ:6 http://security.ubuntu.com/ubuntu jammy-security InRelease                                                                                  
+Сущ:7 https://download.virtualbox.org/virtualbox/debian jammy InRelease           
+Чтение списков пакетов… Готово            
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Может быть обновлено 52 пакета. Запустите «apt list --upgradable» для их показа.
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ sudo apt install mysql-server mysql-client
+Чтение списков пакетов… Готово
+Построение дерева зависимостей… Готово
+Чтение информации о состоянии… Готово         
+Следующие пакеты устанавливались автоматически и больше не требуются:
+  apache2-data apache2-utils bridge-utils dbconfig-common dbconfig-mysql icc-profiles-free javascript-common libcgi-fast-perl libcgi-pm-perl libevent-core-2.1-7 libevent-pthreads-2.1-7 libfcgi-bin libfcgi-perl
+  libfcgi0ldbl libhtml-template-perl libjs-bootstrap4 libjs-codemirror libjs-jquery libjs-jquery-mousewheel libjs-jquery-timepicker libjs-jquery-ui libjs-popper.js libjs-sizzle libjs-sphinxdoc libjs-underscore
+  libnginx-mod-http-geoip2 libnginx-mod-http-image-filter libnginx-mod-http-xslt-filter libnginx-mod-mail libnginx-mod-stream libnginx-mod-stream-geoip2 libprotobuf-lite23 libzip4 nginx-common nginx-core node-jquery
+  php-bz2 php-curl php-gd php-google-recaptcha php-json php-mariadb-mysql-kbs php-mysql php-nikic-fast-route php-phpmyadmin-motranslator php-phpmyadmin-shapefile php-phpmyadmin-sql-parser php-phpseclib php-psr-cache
+  php-psr-container php-psr-log php-symfony-cache php-symfony-cache-contracts php-symfony-config php-symfony-dependency-injection php-symfony-deprecation-contracts php-symfony-expression-language
+  php-symfony-filesystem php-symfony-polyfill-php80 php-symfony-polyfill-php81 php-symfony-service-contracts php-symfony-var-exporter php-tcpdf php-twig php-twig-i18n-extension php-xml php-zip php8.1-bz2 php8.1-curl
+  php8.1-gd php8.1-mysql php8.1-xml php8.1-zip ubuntu-fan
+Для их удаления используйте «sudo apt autoremove».
+Будут установлены следующие дополнительные пакеты:
+  mysql-common mysql-community-client mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core
+Следующие пакеты будут УДАЛЕНЫ:
+  mysql-client-8.0 mysql-client-core-8.0 mysql-server-8.0 mysql-server-core-8.0
+Следующие НОВЫЕ пакеты будут установлены:
+  mysql-client mysql-community-client mysql-community-client-core mysql-community-client-plugins mysql-community-server mysql-community-server-core mysql-server
+Следующие пакеты будут обновлены:
+  mysql-common
+Обновлено 1 пакетов, установлено 7 новых пакетов, для удаления отмечено 4 пакетов, и 51 пакетов не обновлено.
+Необходимо скачать 30,9 MB архивов.
+После данной операции объём занятого дискового пространства возрастёт на 32,6 MB.
+Хотите продолжить? [Д/н] y
+Пол:1 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-common amd64 8.0.36-1ubuntu22.04 [67,9 kB]
+Пол:2 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client amd64 8.0.36-1ubuntu22.04 [2 199 kB]
+Пол:3 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client-plugins amd64 8.0.36-1ubuntu22.04 [1 443 kB]
+Пол:4 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-client-core amd64 8.0.36-1ubuntu22.04 [2 126 kB]
+Пол:5 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-client amd64 8.0.36-1ubuntu22.04 [66,6 kB]
+Пол:6 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-server-core amd64 8.0.36-1ubuntu22.04 [24,9 MB]
+Пол:7 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-community-server amd64 8.0.36-1ubuntu22.04 [78,4 kB]
+Пол:8 http://repo.mysql.com/apt/ubuntu jammy/mysql-8.0 amd64 mysql-server amd64 8.0.36-1ubuntu22.04 [66,6 kB]
+Получено 30,9 MB за 4с (8 333 kB/s)        
+Предварительная настройка пакетов …
+(Чтение базы данных … на данный момент установлен 221831 файл и каталог.)
+Удаляется mysql-server-8.0 (8.0.36-0ubuntu0.22.04.1) …
+update-alternatives: используется /etc/mysql/my.cnf.fallback для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Удаляется mysql-server-core-8.0 (8.0.36-0ubuntu0.22.04.1) …
+dpkg: mysql-client-core-8.0: имеются проблемы с зависимостями, но по вашему указанию
+он всё равно будет удалён:
+ mysql-client-8.0 зависит от mysql-client-core-8.0.
+
+Удаляется mysql-client-core-8.0 (8.0.36-0ubuntu0.22.04.1) …
+dpkg: mysql-client-8.0: имеются проблемы с зависимостями, но по вашему указанию
+он всё равно будет удалён:
+ dbconfig-mysql зависит от default-mysql-client | virtual-mysql-client, однако:
+  Пакет default-mysql-client не установлен.
+  Пакет virtual-mysql-client не установлен.
+  Пакет mysql-client-8.0 предоставляет virtual-mysql-client, но должен быть удалён.
+
+Удаляется mysql-client-8.0 (8.0.36-0ubuntu0.22.04.1) …
+(Чтение базы данных … на данный момент установлено 221628 файлов и каталогов.)
+Подготовка к распаковке …/0-mysql-common_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-common (8.0.36-1ubuntu22.04) на замену (5.8+1.0.8) …
+Выбор ранее не выбранного пакета mysql-community-client.
+Подготовка к распаковке …/1-mysql-community-client_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-client-plugins.
+Подготовка к распаковке …/2-mysql-community-client-plugins_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client-plugins (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-client-core.
+Подготовка к распаковке …/3-mysql-community-client-core_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-client-core (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-client.
+Подготовка к распаковке …/4-mysql-client_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-client (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-server-core.
+Подготовка к распаковке …/5-mysql-community-server-core_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-server-core (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-community-server.
+Подготовка к распаковке …/6-mysql-community-server_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-community-server (8.0.36-1ubuntu22.04) …
+Выбор ранее не выбранного пакета mysql-server.
+Подготовка к распаковке …/7-mysql-server_8.0.36-1ubuntu22.04_amd64.deb …
+Распаковывается mysql-server (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-common (8.0.36-1ubuntu22.04) …
+Устанавливается новая версия файла настройки /etc/mysql/conf.d/mysql.cnf …
+Устанавливается новая версия файла настройки /etc/mysql/my.cnf.fallback …
+Настраивается пакет mysql-community-server-core (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-community-client-plugins (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-community-client-core (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-community-client (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-client (8.0.36-1ubuntu22.04) …
+Настраивается пакет mysql-community-server (8.0.36-1ubuntu22.04) …
+Устанавливается новая версия файла настройки /etc/apparmor.d/usr.sbin.mysqld …
+Устанавливается новая версия файла настройки /etc/mysql/mysql.cnf …
+Устанавливается новая версия файла настройки /etc/mysql/mysql.conf.d/mysqld.cnf …
+update-alternatives: используется /etc/mysql/mysql.cnf для предоставления /etc/mysql/my.cnf (my.cnf) в автоматическом режиме
+Настраивается пакет mysql-server (8.0.36-1ubuntu22.04) …
+Обрабатываются триггеры для man-db (2.10.2-1) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.7) …
+
+4. Установить и удалить deb-пакет с помощью dpkg.
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ apt download libfuse2
+Пол:1 http://ru.archive.ubuntu.com/ubuntu jammy/universe amd64 libfuse2 amd64 2.9.9-5ubuntu3 [90,3 kB]
+Получено 90,3 kB за 1с (176 kB/s)   
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ sudo dpkg -i libfuse2_2.9.9-5ubuntu3_amd64.deb
+Выбор ранее не выбранного пакета libfuse2:amd64.
+(Чтение базы данных … на данный момент установлено 222183 файла и каталога.)
+Подготовка к распаковке libfuse2_2.9.9-5ubuntu3_amd64.deb …
+Распаковывается libfuse2:amd64 (2.9.9-5ubuntu3) …
+Настраивается пакет libfuse2:amd64 (2.9.9-5ubuntu3) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.7) …
+olgrin@Olgrin-GeekBrains-Ubuntu:~$ sudo dpkg -r libfuse2
+(Чтение базы данных … на данный момент установлено 222195 файлов и каталогов.)
+Удаляется libfuse2:amd64 (2.9.9-5ubuntu3) …
+Обрабатываются триггеры для libc-bin (2.35-0ubuntu3.7) …
+
+
+
+5. Выложить историю команд в терминале ubuntu
+
+
